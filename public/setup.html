@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>الإعداد الأول — نداء</title>
+<link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/pages.css">
+<script type="module" src="/js/setup.js"></script>
+</head>
+<body class="auth-page">
+<main class="setup-wrap">
+  <div class="auth-brand"><img src="/icons/favicon.svg" alt="" width="56" height="56"><h1>إعداد نداء</h1></div>
+  <div id="state"><div class="spinner"></div></div>
+  <form id="form" class="card card-pad stack" hidden novalidate>
+    <div class="alert alert-error" id="err" role="alert" hidden></div>
+    <fieldset class="stack" id="tokenSet" hidden>
+      <label class="field"><span>رمز الإعداد</span><input class="input input-ltr" id="setupToken" autocomplete="off" required>
+        <small>قيمة SETUP_TOKEN من إعدادات الاستضافة. تمنع أي شخص آخر من الاستيلاء على النظام.</small></label>
+    </fieldset>
+    <h2>المحل</h2>
+    <label class="field"><span>اسم المحل</span><input class="input" id="shopName" maxlength="60" required placeholder="مثال: مقهى الصباح"></label>
+    <label class="field"><span>الشعار <small>(اختياري — يمكن إضافته لاحقًا)</small></span><input class="input" id="logo" type="file" accept="image/png,image/jpeg,image/webp"></label>
+    <h2>الفرع</h2>
+    <label class="field"><span>اسم الفرع</span><input class="input" id="branchName" maxlength="60" value="الفرع الرئيسي" required></label>
+    <label class="field"><span>المنطقة الزمنية</span>
+      <select class="input" id="timezone"><option>Asia/Riyadh</option><option>Asia/Dubai</option><option>Asia/Kuwait</option><option>Asia/Qatar</option><option>Asia/Bahrain</option><option>Asia/Muscat</option><option>Asia/Amman</option><option>Africa/Cairo</option><option>Africa/Casablanca</option><option>Europe/Istanbul</option><option>UTC</option></select></label>
+    <label class="field"><span>مكان الاستلام</span><input class="input" id="pickup" maxlength="140" placeholder="مثال: من نافذة الاستلام يسار الكاشير"></label>
+    <h2>حساب المالك</h2>
+    <label class="field"><span>اسمك</span><input class="input" id="ownerName" maxlength="40" required></label>
+    <label class="field"><span>اسم الدخول (لاتيني)</span><input class="input input-ltr" id="username" maxlength="32" autocapitalize="none" spellcheck="false" autocomplete="username" required placeholder="owner"></label>
+    <label class="field"><span>كلمة المرور</span><input class="input input-ltr" id="password" type="password" minlength="8" autocomplete="new-password" required><small>8 أحرف على الأقل</small></label>
+    <button class="btn btn-primary btn-lg btn-block" type="submit" id="submit">إنشاء وبدء الاستخدام</button>
+  </form>
+</main>
+</body>
+</html>

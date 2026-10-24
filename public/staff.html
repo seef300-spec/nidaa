@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0e3b29">
+<title>لوحة الطلبات — نداء</title>
+<link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/staff.css">
+<script type="module" src="/js/staff.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/staff" id="brand"><span class="brand-mark" id="brandMark"></span><span id="shopName">نداء</span></a>
+  <span class="muted-on-dark" id="branchName"></span>
+  <select class="branch-select" id="branchSelect" aria-label="الفرع" hidden></select>
+  <span class="conn" id="conn" data-state="connecting" role="status" aria-live="polite"><span class="dot"></span><span id="connText">جارٍ الاتصال…</span></span>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost btn-sm" href="/display" target="_blank" rel="noopener" title="افتح هذه الصفحة على التابلت">صفحة الشاشة ↗</a>
+  <a class="btn btn-ghost btn-sm" href="/staff/settings" id="settingsLink" hidden>الإعدادات</a>
+  <span id="userName" class="small"></span>
+  <button class="btn btn-ghost btn-sm" id="logout" type="button">خروج</button>
+</header>
+<div class="banner banner-offline" id="offlineBanner" hidden>لا يوجد اتصال بالإنترنت — لن تُنفّذ أي عملية حتى يعود الاتصال.</div>
+<div class="banner banner-stale" id="staleBanner" hidden></div>
+<div class="banner banner-stale" id="setupBanner" hidden></div>
+
+<main class="staff-main">
+  <section class="create card" aria-label="إنشاء طلب">
+    <button class="btn btn-primary btn-xl create-btn" id="createBtn" type="button" aria-keyshortcuts="n">
+      <span class="plus" aria-hidden="true">+</span> طلب جديد
+    </button>
+    <div class="create-fields">
+      <label class="field"><span>رقم الفاتورة <small>(اختياري)</small></span>
+        <input class="input" id="refInput" maxlength="40" autocomplete="off" inputmode="text" placeholder="مثال: 1045"></label>
+      <label class="field"><span>ملاحظة داخلية <small>(لا يراها العميل)</small></span>
+        <input class="input" id="noteInput" maxlength="300" autocomplete="off" placeholder="اختياري"></label>
+      <label class="check"><input type="checkbox" id="showOnDisplay" checked> اعرض الرمز على الشاشة</label>
+    </div>
+    <div class="now-showing" id="nowShowing" aria-live="polite"></div>
+  </section>
+
+  <nav class="toolbar" aria-label="تصفية الطلبات">
+    <div class="tabs" role="tablist" id="tabs">
+      <button role="tab" data-filter="active" aria-selected="true">النشطة <span class="count" data-c="active"></span></button>
+      <button role="tab" data-filter="preparing">قيد التجهيز <span class="count" data-c="preparing"></span></button>
+      <button role="tab" data-filter="ready">جاهزة <span class="count" data-c="ready"></span></button>
+      <button role="tab" data-filter="delivered">مسلّمة <span class="count" data-c="delivered"></span></button>
+      <button role="tab" data-filter="cancelled">ملغاة <span class="count" data-c="cancelled"></span></button>
+      <button role="tab" data-filter="all">السجل</button>
+    </div>
+    <form class="search" id="searchForm" role="search">
+      <input class="input" id="searchInput" type="search" placeholder="ابحث برقم الطلب أو الفاتورة" aria-label="بحث" autocomplete="off">
+      <input class="input" id="dateInput" type="date" aria-label="تاريخ اليوم التشغيلي">
+      <button class="btn" type="submit">بحث</button>
+      <button class="btn btn-ghost" type="button" id="clearSearch" hidden>مسح</button>
+    </form>
+  </nav>
+
+  <section id="board" class="board" aria-live="polite">
+    <div class="center-pad"><div class="spinner" role="progressbar" aria-label="جارٍ التحميل"></div></div>
+  </section>
+  <div class="more-wrap"><button class="btn" id="moreBtn" type="button" hidden>عرض المزيد</button></div>
+</main>
+</body>
+</html>

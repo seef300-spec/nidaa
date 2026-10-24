@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f6f4ee">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="شاشة نداء">
+<link rel="manifest" href="/display.webmanifest">
+<link rel="icon" href="/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<title>شاشة العرض — نداء</title>
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/display.css">
+<script type="module" src="/js/display.js"></script>
+</head>
+<body class="display">
+<div class="d-status" id="dStatus" hidden role="status"></div>
+<button class="d-fs" id="fsBtn" type="button" hidden>ملء الشاشة</button>
+
+<main id="pairView" class="d-pair" hidden>
+  <div class="card card-pad stack d-pair-card">
+    <img src="/icons/favicon.svg" alt="" width="64" height="64">
+    <h1>اقتران شاشة العرض</h1>
+    <p class="muted">من لابتوب المالك: الإعدادات ← شاشات العرض ← «اقتران شاشة»، ثم أدخل هذا الرمز:</p>
+    <div class="d-code num" id="pairCode" aria-live="polite">······</div>
+    <p class="small muted" id="pairExpiry"></p>
+    <button class="btn" id="newCode" type="button">رمز جديد</button>
+  </div>
+</main>
+
+<main id="mainView" class="d-main" hidden>
+  <header class="d-head"><span id="dLogo"></span><span class="d-shop" id="dShop"></span></header>
+  <section class="d-order" id="dOrder" hidden>
+    <div class="d-qr" id="dQr" aria-label="رمز QR لطلبك"></div>
+    <div class="d-info">
+      <div class="d-label">رقم طلبك</div>
+      <div class="d-number num" id="dNumber"></div>
+      <div class="d-cta">امسح الرمز وتابع طلبك</div>
+      <div class="d-sub">بكاميرا الجوال — بدون تطبيق أو تسجيل</div>
+      <div class="d-wait" id="dWait" hidden></div>
+    </div>
+  </section>
+  <section class="d-idle" id="dIdle" hidden>
+    <div class="d-idle-mark" id="dIdleLogo"></div>
+    <h1 id="dIdleShop"></h1>
+    <p>سيظهر رمز طلبك هنا</p>
+  </section>
+  <div class="d-success" id="dSuccess" hidden role="status" aria-live="assertive">
+    <div class="d-check">✓</div>
+    <div>تم ربط الطلب <span class="num" id="dSuccessNum"></span></div>
+    <div class="d-success-sub">تابع طلبك من جوالك</div>
+  </div>
+</main>
+</body>
+</html>

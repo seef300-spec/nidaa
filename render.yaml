@@ -1,0 +1,30 @@
+# Render Blueprint — من لوحة Render: New ← Blueprint ← اختر المستودع.
+# ينشئ خدمة ويب دائمة التشغيل + قاعدة PostgreSQL مع نسخ احتياطي تلقائي.
+services:
+  - type: web
+    name: nidaa
+    runtime: node
+    plan: starter            # دائم التشغيل (الخطة المجانية تنام بعد 15 دقيقة — غير مناسبة للبيجر)
+    region: frankfurt        # الأقرب للخليج بين مناطق Render
+    buildCommand: npm ci --omit=dev
+    startCommand: node src/server.js
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nidaa-db
+          property: connectionString
+      - key: SETUP_TOKEN        # رمز الإعداد الأول — انسخه من صفحة Environment
+        generateValue: true
+      - key: RETENTION_DAYS
+        value: "90"
+      # الرابط العام يؤخذ تلقائيًا من RENDER_EXTERNAL_URL (https://….onrender.com).
+      # عند ربط نطاق خاص أضف متغير PUBLIC_URL=https://نطاقك من صفحة Environment.
+databases:
+  - name: nidaa-db
+    plan: basic-256mb
+    region: frankfurt
+    postgresMajorVersion: "16"

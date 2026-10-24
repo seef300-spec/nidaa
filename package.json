@@ -1,0 +1,33 @@
+{
+  "name": "nidaa",
+  "version": "1.0.0",
+  "description": "نداء — بيجر رقمي للمقاهي والمطاعم",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "NODE_EXTRA_CA_CERTS=test/fixtures/localhost.crt node --test --test-concurrency=1 test/*.test.js",
+    "test:e2e": "node test/e2e/run.cjs",
+    "migrate": "node scripts/migrate.js",
+    "create-tenant": "node scripts/create-tenant.js"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.1.3",
+    "@fastify/static": "^10.1.7",
+    "@fontsource/ibm-plex-sans-arabic": "^5.3.0",
+    "fastify": "^5.12.7",
+    "pg": "^8.23.1",
+    "qrcode": "^1.5.4",
+    "web-push": "^3.6.7"
+  },
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20.10"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "jsqr": "^1.4.0",
+    "pngjs": "^7.0.0"
+  }
+}

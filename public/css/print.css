@@ -1,0 +1,22 @@
+body { background: #eee; }
+.print-tools { display: flex; gap: 10px; align-items: end; justify-content: center; padding: 12px; flex-wrap: wrap; }
+.print-tools label { display: grid; gap: 4px; font-weight: 600; }
+.ticket { background: #fff; color: #000; margin: 12px auto; padding: 4mm; text-align: center; display: grid; gap: 2mm; justify-items: center; }
+.ticket[data-size='80'] { width: 72mm; }
+.ticket[data-size='58'] { width: 48mm; }
+.ticket[data-size='a6'] { width: 100mm; }
+.ticket .shop { font-weight: 700; font-size: 14pt; }
+.ticket .logo { max-width: 60%; max-height: 18mm; object-fit: contain; filter: grayscale(1) contrast(1.4); }
+.ticket .lbl { font-size: 10pt; }
+.ticket .number { font-size: 40pt; font-weight: 700; line-height: 1; direction: ltr; }
+.ticket .qr { width: 100%; }
+.ticket .qr svg { display: block; width: 100%; height: auto; }
+.ticket .hint { font-size: 11pt; font-weight: 600; }
+.ticket .meta { font-size: 8pt; }
+.ticket .pickup { font-size: 9pt; }
+@media print {
+  @page { margin: 0; size: auto; }
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .ticket { margin: 0 auto; }
+}
