@@ -1,10 +1,13 @@
 # Render Blueprint — من لوحة Render: New ← Blueprint ← اختر المستودع.
-# ينشئ خدمة ويب دائمة التشغيل + قاعدة PostgreSQL مع نسخ احتياطي تلقائي.
+# الإعداد الحالي: الخطة المجانية للتجربة (بلا دفع).
+#   - الخدمة تنام بعد 15 دقيقة بلا زيارات (أول فتح بعدها ~دقيقة). شاشة التابلت ولوحة الموظف المفتوحتان تبقيانها مستيقظة.
+#   - القاعدة المجانية تنتهي بعد 30 يومًا وبلا نسخ احتياطي.
+# للتشغيل الفعلي: غيّر plan إلى starter للخدمة و basic-256mb للقاعدة (أو من لوحة Render ← Upgrade) — البيانات تبقى.
 services:
   - type: web
     name: nidaa
     runtime: node
-    plan: starter            # دائم التشغيل (الخطة المجانية تنام بعد 15 دقيقة — غير مناسبة للبيجر)
+    plan: free               # للتشغيل الفعلي: starter (دائم التشغيل)
     region: frankfurt        # الأقرب للخليج بين مناطق Render
     buildCommand: npm ci --omit=dev
     startCommand: node src/server.js
@@ -25,6 +28,6 @@ services:
       # عند ربط نطاق خاص أضف متغير PUBLIC_URL=https://نطاقك من صفحة Environment.
 databases:
   - name: nidaa-db
-    plan: basic-256mb
+    plan: free               # للتشغيل الفعلي: basic-256mb (نسخ احتياطي + بلا انتهاء)
     region: frankfurt
     postgresMajorVersion: "16"

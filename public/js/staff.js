@@ -49,6 +49,8 @@ async function init() {
   startStream();
   setInterval(tick, 1000);
   setInterval(() => { renderBoard(); renderDisplay(); }, 30000);
+  // تحديث احتياطي خفيف كل 4 دقائق (يبقي الخادم مستيقظًا في الخطط المجانية أثناء فتح اللوحة)
+  setInterval(refreshDisplay, 240000);
 }
 
 function bind() {
